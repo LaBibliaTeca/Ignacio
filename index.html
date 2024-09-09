@@ -36,6 +36,7 @@ x
 	</style>
 </head>
 <body>
+		<button style="width: 200px; height: 50px;background-color: rgb(255, 221, 3);font-size: 16px;" onclick="leerEnVozAlta()">Presionar para Leer en Voz Alta</button>
 <div class="content">
 <h2>&Pi;&Rho;&Omicron;&Sigma; &Epsilon;&Phi;&Epsilon;&Sigma;&Iota;&Omicron;&Upsilon;&Sigma; &Iota;&Gamma;&Nu;&Alpha;&Tau;&Iota;&Omicron;&Sigma;<br />
 CARTA A LOS EFESIOS DE IGNACIO DE ANTIOQUIA DE SIRIA sigloII</h2>
@@ -178,5 +179,36 @@ ____________________________________<br />
 <b>Antes bien, yo y los que enviasteis a la honra de Dios a Esmirna, desde donde tambi&eacute;n os escribo, dando gracias al Se&ntilde;or, amando a Policarpo como a vosotros mismos; acordaos de m&iacute;, como tambi&eacute;n Jesucristo de vosotros. Orad por la Iglesia en Siria, de donde soy llevado a Roma, siendo el &uacute;ltimo de los fieles all&iacute;, seg&uacute;n fui considerado digno de ser hallado para la honra de Dios. Estad bien en Dios Padre y en Jesucristo, nuestra esperanza com&uacute;n. </b><br />
 ____________________________________</p>
 </div>
+	<a href="https://labibliateca.github.io/main/"><mark>PAGINA PRINCIPAL</mark>
+
+
+		<script>
+     function leerEnVozAlta() {
+    // Obtener el texto del elemento con la clase "contenido-texto"
+    var texto = document.querySelector('.contenido').innerText;
+
+    // Dividir el texto en segmentos más pequeños
+    var partes = dividirTextoEnPartes(texto, 560); // Por ejemplo, 200 caracteres por parte
+
+    // Leer cada parte secuencialmente
+    partes.forEach((parte) => {
+        var mensaje = new SpeechSynthesisUtterance(parte);
+        mensaje.lang = 'es-ES';
+        mensaje.pitch = 1;
+        mensaje.rate = 0.9;
+        window.speechSynthesis.speak(mensaje);
+    });
+}
+
+function dividirTextoEnPartes(texto, tamano) {
+    var partes = [];
+    for (var i = 0; i < texto.length; i += tamano) {
+        partes.push(texto.slice(i, i + tamano));
+    }
+    return partes;
+}
+
+    </script>
+
 </body>
 </html>
